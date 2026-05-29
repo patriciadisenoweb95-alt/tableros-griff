@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (password_verify($ingresada, $CLAVE_HASH)) {
         $_SESSION['griff_auth'] = true;
         $_SESSION['griff_ts']   = time();
-        header('Location: /3_RESULTADOS/3_RESULTADOS/INICIO.php');
+        header('Location: /3_RESULTADOS/INICIO.php');
         exit;
     } else {
         $error = 'Contraseña incorrecta.';
