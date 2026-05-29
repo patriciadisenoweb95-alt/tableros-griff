@@ -1,0 +1,5 @@
+DirectoryIndex login.php
+
+<FilesMatch "\.(csv|xlsx|xls|pdf)$">
+    Require all denied
+</FilesMatch>

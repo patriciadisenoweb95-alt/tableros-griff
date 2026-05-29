@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/auth_check.php'; ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -66,7 +68,7 @@
 
   <div class="grid">
 
-    <a class="card" href="cuentas_a_pagar/tablero.html">
+    <a class="card" href="cuentas_a_pagar/tablero.php">
       <div class="crow">
         <div class="ico" style="background:#1A2D9C;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/><path d="M7 15h3"/></svg>
@@ -80,7 +82,7 @@
       <div class="clink" style="color:#1A2D9C;">Abrir tablero &rarr;</div>
     </a>
 
-    <a class="card" href="estado_resultado/dashboard.html">
+    <a class="card" href="estado_resultado/dashboard.php">
       <div class="crow">
         <div class="ico" style="background:#29ABE2;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/></svg>
@@ -94,7 +96,7 @@
       <div class="clink" style="color:#29ABE2;">Abrir tablero &rarr;</div>
     </a>
 
-    <a class="card" href="facturacion/dashboard.html">
+    <a class="card" href="facturacion/dashboard.php">
       <div class="crow">
         <div class="ico" style="background:#3B5BC7;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
@@ -108,7 +110,7 @@
       <div class="clink" style="color:#3B5BC7;">Abrir tablero &rarr;</div>
     </a>
 
-    <a class="card" href="flujo_bancario/tablero.html">
+    <a class="card" href="flujo_bancario/tablero.php">
       <div class="crow">
         <div class="ico" style="background:#1E6FA8;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10l9-7 9 7"/><path d="M5 10v11"/><path d="M19 10v11"/><path d="M10 21v-6h4v6"/></svg>
@@ -122,7 +124,7 @@
       <div class="clink" style="color:#1E6FA8;">Abrir tablero &rarr;</div>
     </a>
 
-    <a class="card" href="proyeccion/proyeccion.html">
+    <a class="card" href="proyeccion/proyeccion.php">
       <div class="crow">
         <div class="ico" style="background:#E0A100;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M3 6h18v15H3z"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
