@@ -1,0 +1,31 @@
+CARPETA DE CHEQUES EMITIDOS
+============================
+
+Pegá acá el reporte de Galicia llamado "Listado de cheques emitidos" en
+formato XLSX (también acepta CSV con el mismo formato).
+
+CÓMO BAJAR EL ARCHIVO DE GALICIA
+---------------------------------
+1. Entrá a Galicia Online Empresas
+2. Cheques > Cheques emitidos > Listado
+3. Bajalo como Excel (.xlsx)
+4. Pegá el archivo acá
+
+PODÉS PEGAR VARIOS ARCHIVOS
+----------------------------
+Si bajás el reporte cada día, todos los archivos en esta carpeta se
+combinan automáticamente. La deduplicación es por "ID del cheque" (la
+clave única alfanumérica de Galicia, ej: V8794J7OPJD2PEY), así que no
+hay riesgo de duplicar.
+
+ESTADOS QUE SE MAPEAN AL FLUJO
+-------------------------------
+   Aceptado / Emitido       -> pendiente (afecta proyección)
+   En depósito / Depositado -> en proceso de depósito (afecta proyección)
+   Pagado                   -> acreditado (NO afecta proyección)
+   Anulado                  -> anulado
+   Repudiado / Rechazado    -> rechazado
+
+DESPUÉS DE PEGAR ARCHIVOS
+--------------------------
+Doble clic en actualizar.bat (en la carpeta principal).

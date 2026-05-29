@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Griff Salud - Tableros General de Informes</title>
+<style>
+  :root{
+    --azul:#1A2D9C; --azul-txt:#15246E; --celeste:#29ABE2;
+    --azul-med:#3B5BC7; --petroleo:#1E6FA8;
+    --bg:#eef2f9; --card:#ffffff; --line:#e2e7f0; --muted:#6b7793;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);color:var(--azul-txt);padding:36px 24px;min-height:100vh;}
+  .wrap{max-width:980px;margin:0 auto;}
+  .head{background:var(--card);border-radius:14px;border:1px solid var(--line);
+    padding:22px 26px;display:flex;align-items:center;gap:20px;
+    border-top:4px solid var(--celeste);}
+  .head img{height:58px;width:auto;}
+  .head .sep{width:1px;height:48px;background:var(--line);}
+  .head h1{font-size:20px;font-weight:700;color:var(--azul);}
+  .head .sub{font-size:13px;color:var(--muted);margin-top:3px;}
+  .bar{display:flex;justify-content:space-between;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:11px 18px;margin:16px 0;font-size:13px;}
+  .bar .lbl{color:var(--muted);font-weight:500;}
+  .bar .val{font-weight:600;color:var(--celeste);}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .card{display:block;text-decoration:none;color:inherit;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;padding:22px 24px;
+    transition:transform .14s,box-shadow .14s,border-color .14s;}
+  .card:hover{transform:translateY(-3px);
+    box-shadow:0 8px 22px rgba(26,45,156,.13);border-color:var(--celeste);}
+  .crow{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+  .ico{width:48px;height:48px;border-radius:11px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;}
+  .ico svg{width:25px;height:25px;}
+  .cname{font-size:17px;font-weight:700;color:var(--azul);}
+  .ctag{font-size:12px;color:var(--muted);margin-top:2px;font-weight:500;}
+  .cdesc{font-size:13px;color:#56607a;line-height:1.6;}
+  .clink{font-size:12.5px;font-weight:700;margin-top:14px;
+    display:flex;align-items:center;gap:5px;}
+  .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:24px;
+    padding-top:16px;border-top:1px solid var(--line);}
+  .foot b{color:var(--azul);}
+  @media(max-width:640px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <img src="assets/griff.png" alt="Griff Salud">
+    <div class="sep"></div>
+    <div>
+      <h1>Tableros General de Informes</h1>
+      <div class="sub">Centro unico de informacion - elegi un tablero para abrir su dashboard</div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <span class="lbl">&#9201;&nbsp;&nbsp;Ultima actualizacion</span>
+    <span class="val" id="ultima">— corre ACTUALIZAR_TODO.bat para procesar —</span>
+  </div>
+
+  <div class="grid">
+
+    <a class="card" href="cuentas_a_pagar/tablero.html">
+      <div class="crow">
+        <div class="ico" style="background:#1A2D9C;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="M3 10h18"/><path d="M7 15h3"/></svg>
+        </div>
+        <div>
+          <div class="cname">Cuentas a Pagar</div>
+          <div class="ctag">Egresos a prestadores</div>
+        </div>
+      </div>
+      <div class="cdesc">Facturas, ordenes de pago y cheques. Cruce triple OP - cheque - planilla.</div>
+      <div class="clink" style="color:#1A2D9C;">Abrir tablero &rarr;</div>
+    </a>
+
+    <a class="card" href="estado_resultado/dashboard.html">
+      <div class="crow">
+        <div class="ico" style="background:#29ABE2;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/></svg>
+        </div>
+        <div>
+          <div class="cname">Estado de Resultado</div>
+          <div class="ctag">Ingresos vs costos</div>
+        </div>
+      </div>
+      <div class="cdesc">Costos prestacionales por obra social, impuestos y resultado del mes.</div>
+      <div class="clink" style="color:#29ABE2;">Abrir tablero &rarr;</div>
+    </a>
+
+    <a class="card" href="facturacion/dashboard.html">
+      <div class="crow">
+        <div class="ico" style="background:#3B5BC7;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+        </div>
+        <div>
+          <div class="cname">Facturacion</div>
+          <div class="ctag">Ingresos emitidos</div>
+        </div>
+      </div>
+      <div class="cdesc">Facturas emitidas a obras sociales, IVA, IIBB y estado de cobranzas.</div>
+      <div class="clink" style="color:#3B5BC7;">Abrir tablero &rarr;</div>
+    </a>
+
+    <a class="card" href="flujo_bancario/tablero.html">
+      <div class="crow">
+        <div class="ico" style="background:#1E6FA8;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10l9-7 9 7"/><path d="M5 10v11"/><path d="M19 10v11"/><path d="M10 21v-6h4v6"/></svg>
+        </div>
+        <div>
+          <div class="cname">Flujo Bancario</div>
+          <div class="ctag">Proyeccion de saldo</div>
+        </div>
+      </div>
+      <div class="cdesc">Saldo proyectado a 30/90 dias, cheques a vencer y excedentes invertibles.</div>
+      <div class="clink" style="color:#1E6FA8;">Abrir tablero &rarr;</div>
+    </a>
+
+    <a class="card" href="proyeccion/proyeccion.html">
+      <div class="crow">
+        <div class="ico" style="background:#E0A100;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M3 6h18v15H3z"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div>
+          <div class="cname">Proyeccion de Pagos</div>
+          <div class="ctag">Estimativo de egresos</div>
+        </div>
+      </div>
+      <div class="cdesc">Linea de tiempo de pagos: cheques comprometidos mas facturas sin pagar, por fecha.</div>
+      <div class="clink" style="color:#E0A100;">Abrir tablero &rarr;</div>
+    </a>
+
+  </div>
+
+  <div class="foot">Para refrescar los datos: doble clic en <b>ACTUALIZAR_TODO.bat</b></div>
+
+</div>
+</body>
+</html>

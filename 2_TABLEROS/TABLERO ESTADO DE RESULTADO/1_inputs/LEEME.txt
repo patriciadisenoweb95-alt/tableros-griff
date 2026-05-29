@@ -1,0 +1,23 @@
+CARPETA DE ENTRADAS (INPUTS)
+============================
+
+Aca van todos los archivos que el sistema lee para armar el tablero.
+
+SUBCARPETAS:
+   estado_resultado/       -> los Excel mensuales del Estado de Resultado
+   costos_prestacionales/  -> las planillas de prestadores por mes
+
+ARCHIVO SUELTO:
+   impuestos.xlsx          -> una fila por mes con IIBB / IVA / Municipalidad.
+                              Editalo a mano cuando quieras. El sistema lo lee
+                              cada vez que corres actualizar.bat.
+
+COMO AGREGAR UN MES NUEVO:
+   1. Pega el Excel de Estado de Resultado en estado_resultado/
+   2. Pega la planilla de prestadores en costos_prestacionales/
+   3. (Opcional) Agrega una fila en impuestos.xlsx para ese mes
+   4. Doble clic en actualizar.bat (en la carpeta raiz)
+   5. Abri 3_outputs/dashboard.html
+
+El sistema detecta el periodo por el nombre de cada archivo, asi que no
+importa el orden en que los pegues ni cuantos meses tengas cargados.

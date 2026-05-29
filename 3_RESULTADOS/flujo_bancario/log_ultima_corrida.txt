@@ -1,0 +1,9 @@
+Corrida: 22/05/2026 08:38:18
+
+SALDOS OK: saldos.csv (1 regs)
+CHEQUES OK: cheques emitidos.csv (262 cheq, $ 874,356,677.81)
+  Estados: {'pendiente': 174, 'acreditado': 67, 'en_proceso_deposito': 13, 'anulado': 5, 'rechazado': 3}
+  Deficit primero: 2026-05-31 $ 192,749,384.26
+  Ventanas excedente: 1
+
+Duracion: 1.9s

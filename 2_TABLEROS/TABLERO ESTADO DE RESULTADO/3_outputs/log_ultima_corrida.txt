@@ -1,0 +1,14 @@
+Corrida: 14/05/2026 18:35:28
+
+ER OK: Estado de Resultado 02-2026.xlsx -> Febrero 2026 (14951 afil, $ 386,312,292.64)
+ER OK: Estado de Resultado 03-2026.xlsx -> Marzo 2026 (14735 afil, $ 361,288,747.04)
+CP OK: COSTOS PRESTACIONALES FEBRERO.xlsx -> Febrero 2026 (206 fact, $ 255,807,358.99)
+CP OK: COSTOS PRESTACIONALES MARZO.xlsx -> Marzo 2026 (273 fact, $ 276,849,479.80)
+IMPUESTOS 02-2026: $ 451,823.25
+IMPUESTOS 03-2026: $ 0.00
+PERIODO 02-2026: ER $70,096,318 | CP $255,807,359
+PERIODO 03-2026: ER $20,362,754 | CP $276,849,480
+
+Excel generado: TABLERO_Resumen.xlsx
+
+Duracion: 2.5s

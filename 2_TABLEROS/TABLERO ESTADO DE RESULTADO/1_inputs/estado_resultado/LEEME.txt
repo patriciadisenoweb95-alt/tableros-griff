@@ -1,0 +1,31 @@
+CARPETA: ESTADO DE RESULTADO
+============================
+
+Pega aca los Excel mensuales del Estado de Resultado, tal cual los armas hoy.
+Uno por mes. El archivo trae junto: ingresos (afiliados, capita, ingresos
+extras), egresos directos resumidos y costos fijos desagregados.
+
+EL NOMBRE DEL ARCHIVO DEBE INCLUIR EL MES Y EL ANIO. Ejemplos validos:
+   - Estado de Resultado 02-2026.xlsx
+   - Estado de Resultado 03-2026.xlsx
+   - estado resultado abril 2026.xlsx
+   - ER 05-2026.xlsx
+
+El sistema detecta el periodo (mes-anio) del nombre del archivo
+automaticamente. Si no lo detecta, manda el archivo a 9_archivo/ignorados/.
+
+ESTRUCTURA ESPERADA (la hoja se llama "Estado_Resultado"):
+   - Fila de obras sociales en columnas: OSPEVIC, OSPIF (Total/Cordoba/
+     Santa Fe/Bah.Blanca), OSPLYFC, OSPM, OSSURRBAC, AMSURRBAC, UOM, OTRAS FC,
+     TOTAL.
+   - Filas de conceptos: Cantidad de Afiliados, Costo de la Capita,
+     Subtotal Capita, Refuerzo capita, Notas de Credito/Debito,
+     Otros Servicios / Auditoria (= ingresos extras), INGRESOS NETOS,
+     Ambulatorio, Internado, Capitado, Traslado, etc. (egresos directos),
+     TOTAL EGRESOS DIRECTOS, Sueldos, Servicios, Honorarios, etc.
+     (costos fijos), TOTAL COSTOS FIJOS.
+
+Si manten es el mismo formato que veniste usando en 02-2026 y 03-2026,
+funciona sin tocar nada.
+
+Cuando agregues un mes nuevo, basta con pegarlo aca y correr "actualizar.bat".

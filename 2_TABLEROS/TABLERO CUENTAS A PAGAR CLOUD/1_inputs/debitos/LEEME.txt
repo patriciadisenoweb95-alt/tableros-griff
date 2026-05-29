@@ -1,0 +1,7 @@
+CARPETA DE DÉBITOS (FUTURO)
+============================
+
+Reservada para cargar débitos administrativos / médicos cuando vengan.
+
+Por ahora el sistema no los procesa (queda pendiente para próxima versión).
+Cuando vayamos a usarla, se va a documentar el formato esperado acá mismo.

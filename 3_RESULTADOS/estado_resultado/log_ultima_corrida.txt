@@ -1,0 +1,18 @@
+Corrida: 22/05/2026 08:38:07
+
+ER OK: Estado de Resultado 02-2026.xlsx -> Febrero 2026 (14951 afil, $ 386,312,292.64)
+ER OK: Estado de Resultado 03-2026.xlsx -> Marzo 2026 (14735 afil, $ 361,288,747.04)
+CP OK: Planilla_Prestadores_01-2026.xlsx -> Enero 2026 (199 fact, $ 237,711,527.52)
+CP OK: Planilla_Prestadores_02-2026.xlsx -> Febrero 2026 (211 fact, $ 272,507,850.10)
+CP OK: Planilla_Prestadores_03-2026.xlsx -> Marzo 2026 (292 fact, $ 279,811,737.14)
+CP OK: Planilla_Prestadores_04-2026.xlsx -> Abril 2026 (254 fact, $ 347,074,895.28)
+IMPUESTOS 02-2026: $ 451,823.25
+IMPUESTOS 03-2026: $ 0.00
+PERIODO 01-2026: ER -- | CP $237,711,528
+PERIODO 02-2026: ER $70,096,318 | CP $272,507,850
+PERIODO 03-2026: ER $20,362,754 | CP $279,811,737
+PERIODO 04-2026: ER -- | CP $347,074,895
+
+Excel generado: TABLERO_Resumen.xlsx
+
+Duracion: 2.6s

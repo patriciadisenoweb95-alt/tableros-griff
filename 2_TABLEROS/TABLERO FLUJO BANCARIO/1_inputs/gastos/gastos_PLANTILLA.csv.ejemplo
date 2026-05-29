@@ -1,0 +1,5 @@
+fecha,concepto,monto,metodo,categoria,estado,notas
+2026-05-05,Pago AFIP IVA,950000,Transferencia,Impuestos,proyectado,Reemplazar con datos reales
+2026-05-10,Sueldos,4500000,Transferencia,Sueldos,proyectado,
+2026-05-02,Edenor,180000,Débito automático,Servicios,proyectado,
+2026-05-25,Alquiler oficina,800000,Transferencia,Alquiler,proyectado,

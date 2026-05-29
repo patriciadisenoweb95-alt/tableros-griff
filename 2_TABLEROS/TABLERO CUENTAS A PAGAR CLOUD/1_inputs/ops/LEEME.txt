@@ -1,0 +1,24 @@
+CARPETA DE ÓRDENES DE PAGO
+==========================
+
+Pegá acá todos los PDFs de órdenes de pago (los que descargás desde Colppy).
+
+El sistema lee cada PDF y extrae:
+   - Número de OP
+   - Fecha
+   - Prestador y CUIT
+   - Comprobantes pagados (FAC, NDC, etc.)
+   - Retenciones de Ganancias / IIBB
+   - Cheques entregados (número, banco, vencimiento, importe)
+
+A partir de ahí cruza:
+   - Cheque ↔ OP ↔ Factura ↔ Obra Social
+
+NOMBRES TÍPICOS DE ARCHIVO:
+   - GRIFFSALUD_op0001-00008356_NOMBREPRESTADOR.pdf
+   - OP 8347_NOMBREPRESTADOR.pdf
+Cualquier nombre vale, el sistema busca el contenido del PDF, no el nombre.
+
+Si un PDF no se procesa bien, queda registrado en
+   3_outputs/ops_con_problemas.csv
+para que lo revises a mano.

@@ -1,0 +1,24 @@
+CARPETA DE MOVIMIENTOS PROYECTADOS
+====================================
+
+Acá van INGRESOS proyectados que no son cheques (cobranzas esperadas,
+transferencias entrantes de obras sociales/clientes, devoluciones,
+etc.). También se pueden cargar egresos genéricos si preferís, pero
+los gastos categorizados conviene cargarlos en 1_inputs/gastos/.
+
+FORMATO ESPERADO (CSV o XLSX)
+------------------------------
+Columnas obligatorias: fecha, tipo, concepto, monto
+Tipo: ingreso | egreso
+
+Ejemplo CSV (movimientos.csv):
+
+   fecha,tipo,concepto,monto
+   2026-05-15,ingreso,Cobranza Ospevic abril,6500000
+   2026-05-20,ingreso,Cobranza OSPLYFC,3200000
+   2026-05-28,ingreso,Devolución IVA,180000
+
+DESPUÉS DE EDITAR
+------------------
+Doble clic en actualizar.bat. Cada fila aparece como ingreso/egreso
+en la proyección del día indicado.

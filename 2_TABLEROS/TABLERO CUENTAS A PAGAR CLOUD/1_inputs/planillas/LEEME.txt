@@ -1,0 +1,31 @@
+CARPETA DE PLANILLAS DE PRESTADORES
+====================================
+
+Pegá acá los archivos xlsx (o csv) de cada planilla de prestadores por período.
+Una planilla por mes. Podés tener cuantas quieras: diciembre, enero, febrero,
+marzo, abril, etc.
+
+EL NOMBRE DEL ARCHIVO DEBE INCLUIR EL MES Y EL AÑO. Ejemplos válidos:
+   - PRESTACIONES MEDICAS ENERO 2026.xlsx
+   - prestaciones febrero 2026.xlsx
+   - planilla marzo 2026.xlsx
+   - prestaciones-diciembre-2025.xlsx
+   - Proyeccion de pagos.csv  (este caso especial: febrero 2026)
+
+El sistema detecta el mes y año del nombre del archivo automáticamente.
+Si no detecta el período, pasa el archivo a la carpeta 9_archivo/ignorados.
+
+ESTRUCTURA ESPERADA DEL ARCHIVO:
+Las primeras columnas tienen que ser: PRESTADOR, CUIT, Numero de Factura,
+Fecha, OBRA SOCIAL, A PAGAR, TOTAL.
+Después pueden venir columnas con fechas de proyección — el sistema las ignora.
+
+OBRAS SOCIALES VÁLIDAS (variantes se normalizan):
+   - OSPEVIC
+   - OSPIF
+   - OSPLYFC
+   - OSSURRBAC (acepta variantes: OSSURBAC, OSSURBACC, OSSRRBAC)
+   - OSPM
+
+Cualquier otra OS o cheque sin match en planilla va a "Sin Asignación"
+(otros proveedores no relacionados con obra social).

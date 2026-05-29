@@ -1,0 +1,181 @@
+# -*- coding: utf-8 -*-
+"""
+Lectura de planillas de prestadores (xlsx o csv).
+Detecta el periodo desde el nombre del archivo.
+Una planilla = un periodo (un mes).
+"""
+
+import os
+import glob
+import pandas as pd
+
+from .utils import num, parse_fecha, norm_nombre, norm_os, norm_cuit, \
+                    detectar_periodo, periodo_label, fecha_str
+
+
+def _leer_archivo(path):
+    """Lee un xlsx o csv y devuelve un DataFrame crudo."""
+    ext = os.path.splitext(path)[1].lower()
+    if ext in (".xlsx", ".xls", ".xlsm"):
+        # openpyxl maneja xlsx
+        df = pd.read_excel(path, dtype=str, engine="openpyxl")
+    else:
+        # CSV: probar separadores y encodings
+        for sep in (";", ","):
+            for enc in ("utf-8-sig", "utf-8", "latin-1"):
+                try:
+                    df = pd.read_csv(path, sep=sep, dtype=str, encoding=enc,
+                                      keep_default_na=False)
+                    if len(df.columns) > 3:
+                        return df
+                except Exception:
+                    continue
+        raise ValueError(f"No pude leer el CSV: {path}")
+    return df
+
+
+def _filas_validas(df):
+    """Filtra filas que no son datos (totales, vacias, NaN, etc.)."""
+    df = df.copy()
+    df.columns = [str(c).strip() for c in df.columns]
+    # Renombrar header con typo conocido
+    df.rename(columns={"31/07/20296": "31/07/2026"}, inplace=True)
+    if "PRESTADOR" not in df.columns:
+        for c in df.columns:
+            if "PRESTADOR" in str(c).upper():
+                df.rename(columns={c: "PRESTADOR"}, inplace=True)
+                break
+    if "PRESTADOR" not in df.columns:
+        raise ValueError("La planilla no tiene columna PRESTADOR")
+    # Normalizar PRESTADOR como string limpio
+    s = df["PRESTADOR"].astype(str).str.strip().str.upper()
+    # Descartar: vacios reales, "nan" (de NaN), "none", "total", "totales"
+    invalidos = {"", "NAN", "NONE", "TOTAL", "TOTALES", "NULL"}
+    df = df[~s.isin(invalidos)].copy()
+    return df
+
+
+def leer_planilla(path):
+    """Lee UNA planilla. Devuelve DataFrame normalizado con columnas:
+    PRESTADOR, CUIT, Numero de Factura, FECHA_FACT, OBRA_SOCIAL,
+    A_PAGAR, PERIODO, ARCHIVO_ORIGEN."""
+    fname = os.path.basename(path)
+    periodo = detectar_periodo(fname)
+    if not periodo:
+        raise ValueError(f"No detecto periodo en nombre: {fname}")
+
+    df = _leer_archivo(path)
+    df = _filas_validas(df)
+
+    # Normalizaciones
+    df["PRESTADOR"] = df["PRESTADOR"].apply(norm_nombre)
+
+    # CUIT: buscar columna que contenga "CUIT"
+    cuit_col = None
+    for c in df.columns:
+        if "CUIT" in str(c).upper():
+            cuit_col = c
+            break
+    if cuit_col is None:
+        raise ValueError(f"No encuentro columna CUIT en {fname}")
+    df["CUIT"] = df[cuit_col].apply(norm_cuit)
+
+    # Factura
+    fact_col = None
+    for c in df.columns:
+        cu = str(c).upper()
+        if "FACTURA" in cu or "COMPROBANTE" in cu:
+            fact_col = c
+            break
+    df["Numero de Factura"] = df[fact_col].astype(str).str.strip() if fact_col \
+        else ""
+
+    # Fecha
+    fecha_col = None
+    for c in df.columns:
+        if str(c).strip().lower() in ("fecha", "fecha factura", "fecha_fact"):
+            fecha_col = c
+            break
+    if fecha_col:
+        df["FECHA_FACT"] = df[fecha_col].apply(
+            lambda x: fecha_str(parse_fecha(x)))
+    else:
+        df["FECHA_FACT"] = ""
+
+    # OS
+    os_col = None
+    for c in df.columns:
+        cu = str(c).upper()
+        if "OBRA SOCIAL" in cu or cu.strip() == "OS":
+            os_col = c
+            break
+    if os_col:
+        # Si la OS no es valida, va a None y luego se filtra (no se imputa)
+        df["OBRA_SOCIAL_RAW"] = df[os_col].astype(str).str.strip()
+        df["OBRA_SOCIAL"] = df["OBRA_SOCIAL_RAW"].apply(
+            lambda x: norm_os(x) or "")
+    else:
+        df["OBRA_SOCIAL_RAW"] = ""
+        df["OBRA_SOCIAL"] = ""
+
+    # A PAGAR
+    pagar_col = None
+    for c in df.columns:
+        cu = str(c).upper().replace(" ", "")
+        if cu in ("APAGAR", "A_PAGAR", "AAPAGAR"):
+            pagar_col = c
+            break
+    if pagar_col:
+        df["A_PAGAR"] = df[pagar_col].apply(num)
+    else:
+        df["A_PAGAR"] = 0.0
+
+    df["PERIODO"] = periodo_label(periodo)
+    df["PERIODO_CODIGO"] = periodo
+    df["ARCHIVO_ORIGEN"] = fname
+
+    cols_out = ["PRESTADOR", "CUIT", "Numero de Factura", "FECHA_FACT",
+                "OBRA_SOCIAL", "OBRA_SOCIAL_RAW", "A_PAGAR", "PERIODO",
+                "PERIODO_CODIGO", "ARCHIVO_ORIGEN"]
+    return df[cols_out].reset_index(drop=True)
+
+
+def leer_carpeta_planillas(carpeta_planillas):
+    """Lee TODOS los xlsx/csv de la carpeta de planillas y los une.
+    Devuelve (df_unificado, info_dict)."""
+    archivos = []
+    for ext in ("*.xlsx", "*.xls", "*.xlsm", "*.csv"):
+        archivos.extend(glob.glob(os.path.join(carpeta_planillas, ext)))
+    archivos = [a for a in archivos
+                if not os.path.basename(a).lower().startswith("~$")  # temporales Excel
+                and not os.path.basename(a).startswith(".")]
+
+    dfs = []
+    procesados = []
+    ignorados = []
+    for path in sorted(archivos):
+        try:
+            df = leer_planilla(path)
+            dfs.append(df)
+            procesados.append({
+                "archivo": os.path.basename(path),
+                "periodo": df["PERIODO"].iloc[0] if len(df) else "",
+                "facturas": len(df),
+                "monto": df["A_PAGAR"].sum(),
+            })
+        except Exception as e:
+            ignorados.append({
+                "archivo": os.path.basename(path),
+                "motivo": str(e),
+            })
+
+    if dfs:
+        df_total = pd.concat(dfs, ignore_index=True)
+    else:
+        df_total = pd.DataFrame(columns=[
+            "PRESTADOR", "CUIT", "Numero de Factura", "FECHA_FACT",
+            "OBRA_SOCIAL", "OBRA_SOCIAL_RAW", "A_PAGAR", "PERIODO",
+            "PERIODO_CODIGO", "ARCHIVO_ORIGEN"])
+
+    info = {"procesados": procesados, "ignorados": ignorados}
+    return df_total, info

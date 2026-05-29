@@ -1,0 +1,9 @@
+CARPETA DE ARCHIVO
+==================
+
+Subcarpetas:
+   ignorados/   archivos que el sistema no pudo interpretar (Excel sin
+                periodo detectable en el nombre, archivos corruptos, etc.)
+   respaldo/    versiones anteriores del dashboard por si queres volver atras
+
+El sistema NO borra nada de aca. Es para tu control manual.
