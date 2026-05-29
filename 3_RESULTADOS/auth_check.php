@@ -8,7 +8,7 @@ $sesion_vigente = (time() - ($_SESSION['griff_ts'] ?? 0)) < $TTL;
 
 if (!$tiene_sesion || !$sesion_vigente) {
     session_destroy();
-    header('Location: /login.php');
+    header('Location: /3_RESULTADOS/3_RESULTADOS/login.php');
     exit;
 }
 ?>
