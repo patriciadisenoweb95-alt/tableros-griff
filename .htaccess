@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^$ /3_RESULTADOS/login.php [R=302,L]
+RewriteRule ^(.+)$ /3_RESULTADOS/$1 [L]
