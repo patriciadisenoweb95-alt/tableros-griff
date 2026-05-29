@@ -9,5 +9,5 @@
 //
 // Contraseña actual: griff2026
 
-$CLAVE_HASH = '$2y$12$Dx8dRdLJzqnocBmk38AwgezfYcx1AwSz7C2xEdjkQCt3qw0/x3vju';
+$CLAVE_HASH = '$2y$10$74C2PnSqbOupnocTTGWIzOORcXsTVST.gdSwlrYObCH.Ic6rlY.3.';
 ?>
