@@ -1,1 +1,0 @@
-# Módulos internos del Tablero

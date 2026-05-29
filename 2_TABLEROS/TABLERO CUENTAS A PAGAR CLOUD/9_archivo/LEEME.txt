@@ -1,9 +1,0 @@
-CARPETA DE ARCHIVO
-==================
-
-Acá pasamos archivos viejos o que el sistema no pudo procesar.
-
-Subcarpetas:
-   - ignorados/   archivos que no se pudieron interpretar (planillas sin
-                  período detectado, csv corruptos, etc.)
-   - respaldo/   versiones anteriores del tablero por si querés volver atrás

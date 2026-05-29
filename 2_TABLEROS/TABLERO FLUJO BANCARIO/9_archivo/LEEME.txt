@@ -1,6 +1,0 @@
-CARPETA DE ARCHIVO
-===================
-
-Subcarpetas:
-   ignorados/   archivos que no se pudieron interpretar
-   respaldo/    versiones anteriores del tablero
